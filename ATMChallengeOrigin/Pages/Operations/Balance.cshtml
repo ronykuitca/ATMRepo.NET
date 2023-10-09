@@ -1,0 +1,32 @@
+﻿@page
+@model ATMChallengeOrigin.Pages.Operations.BalanceModel
+@{
+    ViewData["Title"] = "Balance";
+}
+
+<style>
+
+    .box-container {
+        border: 1px solid #ccc; 
+        padding: 20px; 
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+    }
+</style>
+
+<div class="box-container">
+    <h1>Balance</h1>
+
+    @if (Model.Card != null)
+    {
+        <div>
+            <p>Número de Tarjeta: @string.Join("-", Model.Card.CardNumber.Substring(0, 4), Model.Card.CardNumber.Substring(4, 4), Model.Card.CardNumber.Substring(8, 4), Model.Card.CardNumber.Substring(12, 4))</p>
+            <p>Cantidad de saldo en la Cuenta: @Model.Card.Balance$</p>
+            <p>Fecha de vencimiento: @Model.Card.ExpirationDate.ToString("dd/MM/yyyy")</p>
+        </div>
+    }
+
+    <div>
+        <a asp-page="/Operations/Operation" asp-route-id="@Model.Card.Id">Atrás</a>
+        <a asp-page="/Index">Salir</a>
+    </div>
+</div>

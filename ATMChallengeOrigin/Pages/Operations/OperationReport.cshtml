@@ -1,0 +1,30 @@
+﻿@page
+@model ATMChallengeOrigin.Pages.Operations.OperationReportModel
+@{
+    ViewData["Title"] = "Reporte de Operación";
+}
+
+<style>
+    /* Estilo para el contenedor del reporte de operación */
+    .report-container {
+        border: 1px solid #ccc; /* Borde con color gris claro */
+        padding: 20px; /* Espaciado interno */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Sombreado ligero */
+    }
+</style>
+
+<div class="report-container">
+    <h1>Reporte de Operación</h1>
+
+    <div>
+        <p>Número de Tarjeta: @Model.Card.CardNumber</p>
+        <p>Fecha y Hora: @Model.Operation.Time</p>
+        <p>Cantidad Retirada: @Model.Operation.MoneyWithdrawn $</p>
+        <p>Balance actual de la Cuenta: @Model.Card.Balance $</p>
+    </div>
+
+    <div>
+        <a asp-page="../Operations/Withdrawal" asp-route-cardId="@Model.Card.Id" class="btn btn-info">Atrás</a>
+        <a asp-page="/Index" class="btn btn-danger">Salir</a>
+    </div>
+</div>

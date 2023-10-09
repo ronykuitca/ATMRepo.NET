@@ -1,0 +1,35 @@
+﻿@page
+@model ATMChallengeOrigin.Pages.Operations.OperationModel
+@{
+    <style>
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .btn-exit {
+            background-color: #dc3545; 
+        }
+
+        button:hover {
+            background-color: #0056b3; 
+        }
+    </style>
+
+
+    <h1>Operaciones disponibles</h1>
+    <form method="post">
+        <input type="hidden" asp-for="Card.Id" />
+        <input type="hidden" asp-for="Card.EncryptedPin" />
+        <button type="submit" asp-page-handler="Balance" class="custom-button">Balance</button>
+        <button type="submit" asp-page-handler="Withdrawal" class="custom-button">Retiro</button>
+        <button type="submit" asp-page-handler="LogOut" class="custom-button btn-exit">Salir</button>
+
+    </form>
+}
+

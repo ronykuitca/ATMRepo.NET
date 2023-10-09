@@ -1,0 +1,51 @@
+﻿@page
+@model Cards.IndexModel
+@{
+    ViewData["Title"] = "Ingresar PIN";
+}
+
+
+<div>
+    <h1>Ingrese el PIN de la tarjeta</h1>
+
+    <form method="post">
+
+        <input type="password" id="pin" name="pin" class="form-control" readonly="readonly" />
+
+
+        <div class="numeric-keypad mt-3">
+            @for (int i = 1; i <= 9; i++)
+            {
+                <button type="button" class="btn btn-info" onclick="appendDigit(@i)">@i</button>
+            }
+            <button type="button" class="btn btn-info" onclick="appendDigit(0)">0</button>
+        </div>
+
+        <div class="form-group mt-3">
+            <button type="submit" name="submit" class="btn btn-success">Aceptar</button>
+            <button type="button" class="btn btn-danger ml-3" onclick="exit()">Salir</button>
+            <button type="button" class="btn btn-primary ml-3" onclick="clearInput()">Limpiar</button>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    function appendDigit(digit) {
+        var pin = document.getElementById("pin");
+        if (pin.value.length < 5) {
+            pin.value += digit;
+        }
+    }
+
+    function clearInput() {
+        document.getElementById("pin").value = "";
+    }
+
+    function exit() {
+
+        window.location.href = "/";
+    }
+</script>
+
+<partial name="_ValidationScriptsPartial" />
